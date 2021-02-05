@@ -14,6 +14,7 @@ public class BIOServer {
     public static void main(String[] args) throws Exception {
 
         //2021-2-5 23:39:25
+        int a = 1;
         //线程池机制
 
         //思路

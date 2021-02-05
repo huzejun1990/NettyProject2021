@@ -9,6 +9,7 @@ import java.nio.IntBuffer;
 public class BasicBuffer {
     public static void main(String[] args) {
 
+        int b = 2;
         //举例说明Buffer的使用
         //创建一个Buffer,大小为5，即可以存放5个int
         IntBuffer intBuffer = IntBuffer.allocate(5);

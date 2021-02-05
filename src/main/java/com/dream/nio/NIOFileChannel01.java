@@ -8,6 +8,7 @@ public class NIOFileChannel01 {
     public static void main(String[] args) {
         String str = "hello,你好呀！";
 
+        int c  = 1;
 
     }
 

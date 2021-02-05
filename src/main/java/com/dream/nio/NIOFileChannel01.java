@@ -10,6 +10,8 @@ public class NIOFileChannel01 {
 
         int c  = 1;
 
+        int b = 2;
+
     }
 
 }

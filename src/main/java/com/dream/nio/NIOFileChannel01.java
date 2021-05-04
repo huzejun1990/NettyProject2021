@@ -10,7 +10,7 @@ import java.nio.channels.FileChannel;
  */
 public class NIOFileChannel01 {
     public static void main(String[] args) throws Exception {
-        String str = "hello,你好呀！";
+        String str = "hello,你好呀！,我很好";
 
         // 创建一个输出流 -》 channel
         FileOutputStream fileOutputStream = new FileOutputStream("E:\\File\\file01.txt");

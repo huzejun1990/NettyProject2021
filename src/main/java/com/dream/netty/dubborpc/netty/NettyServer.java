@@ -40,7 +40,7 @@ public class NettyServer {
                             ChannelPipeline pipeline = ch.pipeline();
                             pipeline.addLast(new StringDecoder());
                             pipeline.addLast(new StringEncoder());
-                            pipeline.addLast(null);     //业务处理器
+                            pipeline.addLast(new NettyServerHandler());     //业务处理器
                         }
                     });
 

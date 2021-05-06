@@ -41,6 +41,7 @@ public class GroupChatServer {
     // 监听
     public void listen(){
 
+        System.out.println("监听的线程！" + Thread.currentThread().getName());
         try {
 
             //循环处理
@@ -122,7 +123,7 @@ public class GroupChatServer {
     private void sendInfoToOtherClients(String msg, SocketChannel self) throws Exception {
 
         System.out.println("服务器转发消息中....");
-
+        System.out.println("服务器转发数据给客户端的线程！" + Thread.currentThread().getName());
         //遍历 所有注册到selector 上的 SocketChannel，并排除 self
         for (SelectionKey key : selector.keys()) {
 
@@ -153,4 +154,15 @@ public class GroupChatServer {
         groupChatServer.listen();
 
     }
+
+}
+//可以写一个Handler
+
+class MyHandler {
+    public void readData(){
+
+    }
+
+    public void sendInfoToOtherClients(){}
+
 }

@@ -29,7 +29,7 @@ public class BIOServer {
         ServerSocket serverSocket = new ServerSocket(6666);
         System.out.println("服务器启动");
 
-        while (true){
+       while (true){
             System.out.println("线程信息 id = "+ Thread.currentThread().getId() + "名字="
                     + Thread.currentThread().getName());
 

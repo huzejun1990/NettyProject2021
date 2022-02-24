@@ -13,7 +13,7 @@ public class NIOFileChannel01 {
         String str = "hello,你好呀！,我很好";
 
         // 创建一个输出流 -》 channel
-        FileOutputStream fileOutputStream = new FileOutputStream("E:\\File\\file01.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream("E:\\File\\file011.txt");
 
         //通过 fileOutputStream 获取 对应的 FileChannel
         //这个 fileChannel 真实 类型是 FileChannelImpl

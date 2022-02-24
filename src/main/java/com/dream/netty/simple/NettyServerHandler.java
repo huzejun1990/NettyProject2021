@@ -1,9 +1,14 @@
 package com.dream.netty.simple;
 
+import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelPipeline;
 import io.netty.util.CharsetUtil;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @ClassName : NettyServerHandler
@@ -30,6 +35,13 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
      */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+
+/*        System.out.println("server ctx = " + ctx);
+        //将 msg 转成一个 ByteBuf
+        //ByteBuf 是 Netty 提供的，不是 NIO 的 ByteBuffer,
+        ByteBuf buf = (ByteBuf) msg;
+        System.out.println("客户端发送消息是：" + buf.toString(CharsetUtil.UTF_8));
+        System.out.println("客户端地址：" + ctx.channel().remoteAddress());*/
 
         // writeAndFlush 是 write + flush
         //将数据写入不对劲缓存，并刷新
@@ -71,19 +83,34 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
         });
 
 
+        //用户自定义定时任务 =》 该任务提交到 scheduleTaskQueue中
+        ctx.channel().eventLoop().schedule(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(20 * 1000);
+                    ctx.writeAndFlush(Unpooled.copiedBuffer("hello,客户端~ 喵 4",
+                            CharsetUtil.UTF_8));
+                } catch (Exception ex){
+                    System.out.println("发生异常 " + ex.getMessage());
+                }
+            }
+        },5, TimeUnit.SECONDS);
+
+
 
         System.out.println("go on .....");
 
-/*        System.out.println("服务器读取线程：" + Thread.currentThread().getName());
-        System.out.println("server ctx = "+ctx);
+        System.out.println("服务器读取线程：" + Thread.currentThread().getName() + "channle =" + ctx.channel());
+        System.out.println("server ctx = " + ctx);
         System.out.println("看看channel 和 pipeline的关系");
         Channel channel = ctx.channel();
         ChannelPipeline pipeline = ctx.pipeline();  //本质是一个双向链表
         //将 msg 转成一个 ByteBuf
         //ByteBuf 是 Netty提供的，不是 NIO的 ByteBuffer
-        ByteBuf  buf = (ByteBuf) msg;
+        ByteBuf buf = (ByteBuf) msg;
         System.out.println("客户端发送消息是：" + buf.toString(CharsetUtil.UTF_8));
-        System.out.println("客户端地址： "+ channel.remoteAddress());*/
+        System.out.println("客户端地址： "+ channel.remoteAddress());
     }
 
     //数据读取完毕

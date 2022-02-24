@@ -29,6 +29,7 @@ public class MappedByteBufferTest {
          * 参数2：0 ：可以直接修改的起始位置
          * 参数3：5： 是映射到内存的大小（不是索引位置），即 将文件 1.txt 的多少个字节映射到内存
          * 可以直接修改的范围就是 0-5
+         * 实际类型 DirectByteBuffer
          */
         MappedByteBuffer mappedByteBuffer = channel.map(FileChannel.MapMode.READ_WRITE, 0, 5);
 

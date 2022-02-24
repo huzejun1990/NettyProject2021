@@ -13,7 +13,7 @@ public class NIOFileChannel02 {
     public static void main(String[] args) throws Exception {
 
         //创建文件的输入流
-        File file = new File("E:\\File\\file01.txt");
+        File file = new File("E:\\File\\file011.txt");
         FileInputStream fileInputStream = new FileInputStream(file);
 
         //通过fileInputStream 获取对应的FileChannel -> 实际类型 FileChannelImp;
@@ -27,6 +27,7 @@ public class NIOFileChannel02 {
 
         //将byteBuffer 的字节 转成String
         System.out.println(new String(byteBuffer.array()));
+        fileInputStream.close();
 
     }
 }

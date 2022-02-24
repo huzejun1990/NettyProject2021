@@ -16,7 +16,7 @@ public class NIOFileChannel03 {
 //        FileInputStream fileInputStream = new FileInputStream("F:\\githubcode\\NettyProject2021\\src\\01.txt");
         FileChannel fileChannel01 = fileInputStream.getChannel();
 
-        FileOutputStream fileOutputStream = new FileOutputStream("2.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream("3.txt");
         FileChannel fileChannel02 = fileOutputStream.getChannel();
 
         ByteBuffer byteBuffer = ByteBuffer.allocate(512);

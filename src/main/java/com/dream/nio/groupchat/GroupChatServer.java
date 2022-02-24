@@ -120,7 +120,7 @@ public class GroupChatServer {
     }
 
     //转发消息给其它客户(通道)
-    private void sendInfoToOtherClients(String msg, SocketChannel self) throws Exception {
+    private void sendInfoToOtherClients( String msg, SocketChannel self ) throws IOException {
 
         System.out.println("服务器转发消息中....");
         System.out.println("服务器转发数据给客户端的线程！" + Thread.currentThread().getName());

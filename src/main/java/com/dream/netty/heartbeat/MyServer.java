@@ -49,7 +49,7 @@ public class MyServer {
                             通过调用（触发）下一个 handler 的 userEventTiggered
                             IdleStateEvent(读空闲、写空闲，读写空闲)
                              */
-                            pipeline.addLast(new IdleStateHandler(13,5,2, TimeUnit.SECONDS));
+                            pipeline.addLast(new IdleStateHandler(10,7000,7000, TimeUnit.SECONDS));
                             //加入一个对空闲检测进一步处理的handler(自定义)
                             pipeline.addLast(new MyServerHandler());
                         }
